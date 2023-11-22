@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <link rel="stylesheet" href="generate.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Slab&display=swap');
+      </style>
+    <title>Password Generator ritika</title>
+</head>
+<body>
+    <div class="firstone">
+    <div class="one">
+        <h2>Generate a </h2>
+        <h1>Random Password</h1>
+        <div class="two">
+        <input type="text" id="password" placeholder="Password"><i class='bx bxs-copy' onclick="copyy()"></i></div>
+        <div class="three">
+        <button onclick="generatee()"><i class='bx bx-bulb'></i>Generate</button></div>
+    </div>
+    </div>
+    <script>
+        const pass= document.getElementById("password");
+        const length = 12;
+
+        const uppercase ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowercase = "abcdefghijklmnopqrstuvwxyz";
+        const number ="0123456789";
+        const symbol ="!@#$%^&*<>?";
+         const all = uppercase+lowercase+number+symbol;
+
+        function generatee(){
+            let password="";
+            password += uppercase[Math.floor(Math.random()*uppercase.length)];
+            password += lowercase[Math.floor(Math.random()*lowercase.length)];
+            password += number[Math.floor(Math.random()*number.length)];
+            password += symbol[Math.floor(Math.random()*symbol.length)];
+             while(length > password.length){
+                password += all[Math.floor(Math.random()*all.length)];
+             }
+            pass.value=password;
+        }
+
+        function copyy(){
+            pass.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>
